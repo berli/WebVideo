@@ -3,7 +3,7 @@
 
 #include "types.h"
 
-void *capture_open (const char *dev_name, int v_width, int v_height, PixelFormat  fmt);
+void *capture_open (const char *dev_name, int v_width, int v_height, AVPixelFormat  fmt);
 int capture_get_picture (void *id, Picture *pic);
 int capture_close (void *id);
 

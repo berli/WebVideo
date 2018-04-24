@@ -31,11 +31,11 @@ struct Ctx
 	int bytesperrow;
 	AVPicture pic_src, pic_target;
 	Buffer bufs[2];
-	PixelFormat fmt;
+	AVPixelFormat fmt;
 };
 typedef struct Ctx Ctx;
 
-void *capture_open(const char *dev_name,int t_width, int t_height, PixelFormat tarfmt)
+void *capture_open(const char *dev_name,int t_width, int t_height, AVPixelFormat tarfmt)
 {
 	int id = open(dev_name, O_RDWR);
 	if (id < 0) return 0;
@@ -124,10 +124,10 @@ void *capture_open(const char *dev_name,int t_width, int t_height, PixelFormat t
 		return 0;
 	}
 
-	PixelFormat pixfmt=PIX_FMT_NONE;
+	AVPixelFormat pixfmt=AV_PIX_FMT_NONE;
 	switch (fmt.fmt.pix.pixelformat){
 	case V4L2_PIX_FMT_YUYV:
-		pixfmt=PIX_FMT_YUYV422;
+		pixfmt=AV_PIX_FMT_YUYV422;
 		break;
 
 	case V4L2_PIX_FMT_MJPEG:
@@ -135,7 +135,7 @@ void *capture_open(const char *dev_name,int t_width, int t_height, PixelFormat t
         break;
 	}
 
-	if(pixfmt==PIX_FMT_NONE){
+	if(pixfmt==AV_PIX_FMT_NONE){
 		fprintf(stderr,"%s:cannot support %4s\n",__func__,(char *)&fmt.fmt.pix.pixelformat);
 		return 0;
 	}

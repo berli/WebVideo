@@ -25,7 +25,7 @@ extern "C"{
 
 int main(int argc,char **argv)
 {
-	void *capture=capture_open("/dev/video0",VIDEO_WIDTH,VIDEO_HEIGHT,PIX_FMT_YUV420P);
+	void *capture=capture_open("/dev/video0",VIDEO_WIDTH,VIDEO_HEIGHT,AV_PIX_FMT_YUV420P);
 	if(!capture){
 		fprintf(stderr,"ERR:can't open '/dev/video0'\n");
 		exit(-1);

@@ -1,8 +1,10 @@
 all:webcam_server 
 
-CC=arm-linux-g++
-LD=arm-linux-ld
-CXXFLAGS=  -c -g -O0 -fPIC -I./ffmpeg/include -L./ffmpeg/lib  
+CC=g++
+LD=ld
+#CC=arm-linux-g++
+#LD=arm-linux-ld
+CXXFLAGS=  -c -g -O0 -fPIC -I/usr/local/include -L/usr/local/lib  
 
 OBJS_SERVER=  capture.o vcompress.o sender.o server.o
 LIBS_SERVER=  -lavcodec -lswscale -lavutil -lx264 -lpthread -lz
